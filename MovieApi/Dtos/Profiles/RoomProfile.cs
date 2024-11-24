@@ -9,6 +9,7 @@ namespace MovieApi.Dtos.Profiles
         public RoomProfile()
         {
             CreateMap<CreateRoomDto, Room>();
+            CreateMap<Room, ResponseRoomDto>();
         }
 
     }

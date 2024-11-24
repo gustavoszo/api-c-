@@ -35,6 +35,7 @@ public class MovieController : ControllerBase
     [HttpGet]
     public IEnumerable<ResponseMovieDto> GetAll([FromQuery] int page)
     {
+        if (page < 0) page = 0;
         return _iMapper.Map<List<ResponseMovieDto>>(_movieContext.Movies.Skip(5*page).Take(5));
     }
 
@@ -42,7 +43,7 @@ public class MovieController : ControllerBase
     public IActionResult GetById(int id)
     {
         var movie = _movieContext.Movies.FirstOrDefault(movie => movie.Id == id);
-        if (movie == null) return NotFound($"Movie com id '{id} não encontrado'");
+        if (movie == null) return NotFound($"Movie com id '{id}' não encontrado'");
         return Ok(_iMapper.Map<ResponseMovieDto>(movie));
     }
 
@@ -50,7 +51,7 @@ public class MovieController : ControllerBase
     public IActionResult Update(int id, [FromBody] UpdateMovieDto updateMovieDto)
     {
         var movie = _movieContext.Movies.FirstOrDefault(movie => movie.Id == id);
-        if (movie == null) return NotFound($"Movie com id '{id} não encontrado'");
+        if (movie == null) return NotFound($"Movie com id '{id}' não encontrado'");
         _iMapper.Map(updateMovieDto, movie);
         _movieContext.SaveChanges();
         return NoContent();
@@ -60,7 +61,7 @@ public class MovieController : ControllerBase
     public IActionResult Delete(int id)
     {
         var movie = _movieContext.Movies.FirstOrDefault(movie => movie.Id == id);
-        if (movie == null) return NotFound($"Movie com id '{id} não encontrado'");
+        if (movie == null) return NotFound($"Movie com id '{id}' não encontrado'");
 
         _movieContext.Movies.Remove(movie);
 

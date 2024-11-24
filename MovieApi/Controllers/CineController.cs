@@ -68,7 +68,7 @@ namespace CineApi.Controllers
         public IActionResult PartialUpdate(int id, [FromBody] JsonPatchDocument<UpdateSessionDto> patch)
         {
             var session = _movieContext.Sessions.FirstOrDefault(c => c.Id == id);
-            if (session == null) return NotFound($"Session com id '{id} não encontrado'");
+            if (session == null) return NotFound($"Session com id '{id}' não encontrado'");
 
             var sessionDto = _iMapper.Map<UpdateSessionDto>(session);
 
@@ -90,7 +90,7 @@ namespace CineApi.Controllers
         public IActionResult Delete(int id)
         {
             var cine = _movieContext.Cines.FirstOrDefault(cine => cine.Id == id);
-            if (cine == null) return NotFound($"Cine com id '{id} não encontrado'");
+            if (cine == null) return NotFound($"Cine com id '{id}' não encontrado'");
 
             Address address = cine.Address;
 

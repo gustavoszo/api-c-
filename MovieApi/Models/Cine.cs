@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
 namespace MovieApi.Models
@@ -18,6 +19,7 @@ namespace MovieApi.Models
 
         public virtual Address Address { get; set; }
 
+        [JsonIgnore]  // Ignorar a referência circular
         public virtual ICollection<Room> Rooms { get; set; }
     }
 }

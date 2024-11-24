@@ -24,7 +24,7 @@ namespace MovieApi.Controllers
         public IActionResult Create([FromBody] CreateRoomDto createRoomDto)
         {
             
-            Cine cine = _movieContext.Cines.FirstOrDefault(f => f.Id == createRoomDto.CineId);
+            Cine cine = _movieContext.Cines.FirstOrDefault(c => c.Id == createRoomDto.CineId);
             if (cine == null) return NotFound($"Cine id '{createRoomDto.CineId} não encontrado'");
 
             Room room = _iMapper.Map<Room>(createRoomDto);
@@ -34,7 +34,7 @@ namespace MovieApi.Controllers
             return CreatedAtAction(nameof(GetById), new { id = room.Id }, room);
         }
 
-        [HttpPost("{id}")]
+        [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
             Room room = _movieContext.Rooms.FirstOrDefault(m => m.Id == id);

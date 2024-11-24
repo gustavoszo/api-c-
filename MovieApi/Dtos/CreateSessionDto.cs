@@ -12,7 +12,7 @@ namespace MovieApi.Dtos
         public int RoomId { get; set; }
 
         [Required]
-        public int MoovieId { get; set; }
+        public int MovieId { get; set; }
 
         [Required]
         public string Time { get; set; }

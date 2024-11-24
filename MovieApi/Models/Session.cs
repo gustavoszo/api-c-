@@ -16,7 +16,7 @@ namespace MovieApi.Models
         public int RoomId { get; set; }
 
         [Required] 
-        public int MoovieId { get; set; }
+        public int MovieId { get; set; }
 
         [Required]
         public DateTime Time { get; set; }

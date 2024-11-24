@@ -9,7 +9,8 @@ namespace MovieApi.Models
         public int Id { get; set; }
 
         [Required]
-        public int CineId { get; set; } 
+        public int CineId { get; set; }
+
 
         public virtual Cine Cine { get; set; }
 
